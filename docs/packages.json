@@ -28,9 +28,9 @@
                     "status": "stable",
                     "kicad_version": "8.0",
                     "download_url": "https://github.com/Alex-C-EE/PULSAR-KiCad-Lib/releases/download/v1.0.0/PULSAR-KiCad-Lib-1.0.0.zip",
-                    "download_sha256": "c1ee8c42560290b5b92a3e25c37bc70520692e37c2df0263d8bc6da4b26d2cd1",
-                    "download_size": 570938,
-                    "install_size": 3150092
+                    "download_sha256": "919dbfdcb0af1ea43e5f0d75aa3c25a98d5b5038e22ca02663e9b98c597ae8cd",
+                    "download_size": 570939,
+                    "install_size": 3150093
                 }
             ]
         }

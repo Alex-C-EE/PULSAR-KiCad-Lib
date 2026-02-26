@@ -23,7 +23,7 @@ A KiCad library containing schematic symbols, PCB footprints, and 3D STEP models
 3. Paste this URL:
 
 ```
-https://alex-c-ee.github.io/PULSAR-KiCad-Lib/repository.json
+https://raw.githubusercontent.com/Alex-C-EE/PULSAR-KiCad-Lib/main/docs/repository.json
 ```
 
 4. Select **PULSAR KiCad Repository** from the dropdown

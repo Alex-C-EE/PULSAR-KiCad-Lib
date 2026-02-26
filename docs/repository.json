@@ -8,6 +8,6 @@
     },
     "name": "PULSAR KiCad Repository",
     "packages": {
-        "url": "https://alex-c-ee.github.io/PULSAR-KiCad-Lib/packages.json"
+        "url": "https://raw.githubusercontent.com/Alex-C-EE/PULSAR-KiCad-Lib/main/docs/packages.json"
     }
 }

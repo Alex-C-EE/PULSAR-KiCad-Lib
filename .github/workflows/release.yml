@@ -1,0 +1,65 @@
+name: Release Library
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g. 1.0.0)'
+        required: true
+        default: '1.0.0'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Determine version from tag or input
+      - name: Set version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+            TAG="v${VERSION}"
+          else
+            TAG="${GITHUB_REF#refs/tags/}"
+            VERSION="${TAG#v}"
+          fi
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "Building version ${VERSION} (tag: ${TAG})"
+
+      # Build the ZIP archive
+      - name: Build package
+        run: python scripts/package.py --version "${{ steps.version.outputs.version }}" --tag "${{ steps.version.outputs.tag }}"
+
+      # Create GitHub Release with the ZIP
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "v${{ steps.version.outputs.version }}"
+          tag_name: "${{ steps.version.outputs.tag }}"
+          files: "PULSAR-KiCad-Lib-${{ steps.version.outputs.version }}.zip"
+          generate_release_notes: true
+
+      # Commit updated packages.json back to main
+      - name: Commit updated packages.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/packages.json
+          git commit -m "Update packages.json for v${{ steps.version.outputs.version }}" || echo "No changes to commit"
+          git push origin HEAD:main

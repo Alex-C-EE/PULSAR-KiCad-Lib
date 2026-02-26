@@ -1,0 +1,30 @@
+{
+    "$schema": "https://go.kicad.org/pcm/schemas/v1",
+    "name": "PULSAR KiCad Library",
+    "description": "Component library for the PULSAR rover project \u2014 symbols, footprints, and 3D models",
+    "description_full": "A KiCad library containing schematic symbols, PCB footprints, and 3D STEP models for components used in the PULSAR competition rover. Includes MOSFETs, voltage regulators, optocouplers, inductors, and more.",
+    "identifier": "com.github.Alex-C-EE.PULSAR-KiCad-Lib",
+    "type": "library",
+    "author": {
+        "name": "Alexandru Constantinescu",
+        "contact": {
+            "web": "https://github.com/Alex-C-EE"
+        }
+    },
+    "license": "MIT",
+    "resources": {
+        "homepage": "https://github.com/Alex-C-EE/PULSAR-KiCad-Lib"
+    },
+    "tags": [
+        "footprints",
+        "symbols",
+        "3dmodels"
+    ],
+    "versions": [
+        {
+            "version": "1.0.0",
+            "status": "stable",
+            "kicad_version": "8.0"
+        }
+    ]
+}
